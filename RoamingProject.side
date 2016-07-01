@@ -1,0 +1,21 @@
+RoamingProject.c
+settings.h
+settings.c
+navigation.h
+navigation.c
+led.h
+led.c
+sdcard.h
+sdcard.c
+remote_control.h
+remote_control.c
+>compiler=C
+>memtype=cmm main ram compact
+>optimize=-Os
+>-m32bit-doubles
+>-Wall
+>-fno-exceptions
+>-Dprintf=__simple_printf
+>defs::-std=c99
+>-lm
+>BOARD::ACTIVITYBOARD
