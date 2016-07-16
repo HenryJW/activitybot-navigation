@@ -1,6 +1,10 @@
 # activitybot-navigation
 Autonomous navigation with Parallax ActivityBot.
 
+**Demo video**
+
+[![Demo video](http://oi65.tinypic.com/mbgvg4.jpg)](https://www.youtube.com/watch?v=cXYDLHrG_DY)
+
 **Required hardware**
 
 1 ActivityBot with Propeller board
