@@ -29,7 +29,7 @@ Sonar used for obstacle detection
 
 Third IR receiver used for optional TV remote control navigation (currently the remote control codes are hardcoded in remote_control.c)
 
-** Resources**
+**Resources**
 
 [SimpleIDE](https://learn.parallax.com/tutorials/language/propeller-c/propeller-c-set-simpleide)
 
