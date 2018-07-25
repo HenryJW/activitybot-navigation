@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "",
+            "intelliSenseMode": "clang-x64",
+            "includePath": [
+                "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries",
+                "C:/Program Files (x86)/SimpleIDE/propeller-gcc",
+                "C:/Program Files (x86)/SimpleIDE/propeller-gcc/lib/gcc/propeller-elf/4.6.1/include",
+                "C:/Program Files (x86)/SimpleIDE/propeller-gcc/propeller-elf/include",
+                "C:/Program Files (x86)/SimpleIDE/propeller-gcc/lib/gcc/propeller-elf/4.6.1/include",
+                "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/TextDevices/libsimpletext",
+                "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/Utility/libsimpletools",
+                "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/Protocol/libsimplei2c",
+                "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/Motor/libservo",
+                "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/Robotics/ActivityBot/libabdrive",
+                "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/Sensor/libping",
+                "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/TextDevices/libfdserial"
+            ]
+        }
+    ],
+    "version": 4
+}

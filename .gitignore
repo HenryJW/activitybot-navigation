@@ -35,6 +35,7 @@ xmmc/
 *.i*86
 *.x86_64
 *.hex
+*.binary
 
 # Debug files
 *.dSYM/
