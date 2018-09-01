@@ -162,7 +162,7 @@ void _stop_reversing() {
 	navigation_stop_driving();
 }
 
-void _blink_left_led() {
+void _blink_left_led(void *params) {
 	led_blink(LEFT_LED_PIN_NUM, 3, _BLINK_INTERVAL);
 	if(_cog_left_led != NULL) {
 		cog_end(_cog_left_led);
@@ -170,7 +170,7 @@ void _blink_left_led() {
 	}
 }
 
-void _blink_right_led() {
+void _blink_right_led(void *params) {
 	led_blink(RIGHT_LED_PIN_NUM, 3, _BLINK_INTERVAL);
 	if(_cog_right_led != NULL) {
 		cog_end(_cog_right_led);

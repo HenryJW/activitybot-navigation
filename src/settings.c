@@ -96,7 +96,7 @@ static char * _getline(FILE *fp) {
 	if(first_char == EOF || (!isprint(first_char)) && !isspace(first_char)) return NULL;
 
 	int line_size = 16;
-	char *line = malloc(line_size);
+	char *line = (char *) malloc(line_size);
 	line[0] = '\0';
 	int c = '\0';
 	int i = 0;
@@ -105,7 +105,7 @@ static char * _getline(FILE *fp) {
 			//Double allocated memory for string
 			char *temp = line;
 			line_size *= 2;
-			line = malloc(line_size);
+			line = (char*) malloc(line_size);
 			strcpy(line, temp);
 			free(temp);
 		}
@@ -117,7 +117,7 @@ static char * _getline(FILE *fp) {
 	if(strlen(line) < line_size) {
 		//Shrink allocated memory to exactly fit string
 		char *temp = line;
-		line = malloc(strlen(line) + 1);
+		line = (char *) malloc(strlen(line) + 1);
 		line = strcpy(line, temp);
 		free(temp);
 	}
