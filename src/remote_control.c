@@ -5,7 +5,6 @@
 
 #include "navigation.h"
 #include "remote_control.h"
-#include "settings.h"
 
 #define _SIRC_TIMEOUT 250
 
@@ -18,6 +17,7 @@ typedef enum {
 	BUTTON_POWER = 21
 } Button;
 
+static uint16_t _IR_RECEIVER_PIN_NUM;
 volatile int *_drive_cog = NULL;
 volatile int *_remote_cog_ptr = NULL;
 volatile int *_on_stop_cog_ptr = NULL;
@@ -34,7 +34,7 @@ static void (*_on_start)(void);
 static void (*_on_stop)(void);
 
 
-void remote_control_init(void (*on_start)(void), void (*on_stop)(void)) {
+void remote_control_init(void (*on_start)(void), void (*on_stop)(void), uint16_t ir_receiver_pin_num) {
 	if(_remote_cog_ptr) _free_cogs();
 	sirc_setTimeout(_SIRC_TIMEOUT);
 	_remote_cog_ptr = cog_run(_start, 64);
@@ -42,7 +42,8 @@ void remote_control_init(void (*on_start)(void), void (*on_stop)(void)) {
 	_is_listening = false;
 	_on_start = on_start;
 	_on_stop = on_stop;
-}
+	_IR_RECEIVER_PIN_NUM = _IR_RECEIVER_PIN_NUM;
+  }
 
 void remote_control_stop() {
 	_is_listening = false;
@@ -68,7 +69,7 @@ static void _start() {
 	short num_times_center_pressed = 0;
 
 	while(_remote_allowed) {
-		button = sirc_button(OTHER_IR_RECEIVER_PIN_NUM);
+		button = sirc_button(_IR_RECEIVER_PIN_NUM);
 
 		bool center_button_was_long_pressed = num_times_center_pressed > 1;
 

@@ -14,6 +14,17 @@ typedef enum {
 	NAVIGATION_SPEED_FASTEST = 128
 } NavigationSpeed;
 
+typedef struct {
+	uint16_t ping_pin_num;
+	uint16_t left_ir_receiver_pin_num;
+	uint16_t left_ir_flashlight_pin_num;
+	uint16_t right_ir_receiver_pin_num;
+	uint16_t right_ir_flashlight_pin_num;
+	uint16_t ping_mount_pin_num;
+} navigation_pin_settings_t;
+
+
+void navigation_init(navigation_pin_settings_t settings);
 
 /*
  * @brief Checks if left is blocked by an obstacle using Ping)))

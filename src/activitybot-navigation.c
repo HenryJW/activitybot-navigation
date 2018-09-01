@@ -12,7 +12,6 @@
 #define _DRIVE_SPEED NAVIGATION_SPEED_FAST
 #define _DRIVE_SPEED_REVERSE NAVIGATION_SPEED_SLOW
 
-
 typedef enum { UNBLOCKED, BLOCKED, REVERSING, CHANGED_DIRECTION } DrivingState;
 
 static void _drive();
@@ -32,7 +31,18 @@ volatile static short _is_remote_controlled = 0;
 
 int main(){
 	settings_init("settings/pins");
-	remote_control_init(_let_remote_control_take_over, _let_robot_drive_itself);
+	remote_control_init(_let_remote_control_take_over, _let_robot_drive_itself, OTHER_IR_RECEIVER_PIN_NUM);
+
+	navigation_pin_settings_t navigation_settings = {
+		ping_pin_num: PING_PIN_NUM,
+		left_ir_receiver_pin_num: LEFT_IR_RECEIVER_PIN_NUM,
+		left_ir_flashlight_pin_num: LEFT_IR_FLASHLIGHT_PIN_NUM,
+		right_ir_receiver_pin_num: RIGHT_IR_RECEIVER_PIN_NUM,
+		right_ir_flashlight_pin_num: RIGHT_IR_FLASHLIGHT_PIN_NUM,
+		ping_mount_pin_num: PING_MOUNT_PIN_NUM
+	};
+
+	navigation_init(navigation_settings);
 
     led_blink(26, 3, _BLINK_INTERVAL); //Blink to indicate program has started running
     _drive();
