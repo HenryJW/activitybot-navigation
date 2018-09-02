@@ -22,7 +22,8 @@
                 "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/Robotics/ActivityBot/libabdrive",
                 "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/Sensor/libping",
                 "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/TextDevices/libfdserial",
-                "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/Remote/libsirc"
+                "C:/Program Files (x86)/SimpleIDE/Workspace/Learn/Simple Libraries/Remote/libsirc",
+                "${workspaceFolder}/lib"
             ]
         }
     ],

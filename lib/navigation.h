@@ -2,9 +2,9 @@
 #define NAVIGATION_H
 
 #include <stdbool.h>
+#include <inttypes.h>
 
 extern const float MIN_PING_DISTANCE;
-
 
 typedef enum { 
 	NAVIGATION_SPEED_SLOWEST = 26,

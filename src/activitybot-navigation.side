@@ -1,14 +1,16 @@
 activitybot-navigation.c
 settings.h
 settings.c
-navigation.h
-navigation.c
 led.h
 led.c
 sdcard.h
 sdcard.c
 remote_control.h
 remote_control.c
+-L ./../lib
+-L ./../../../../Documents/SimpleIDE/Learn/Simple Libraries/Motor/libservo
+-L ./../../../../Documents/SimpleIDE/Learn/Simple Libraries/Sensor/libping
+-L ./../../../../Documents/SimpleIDE/Learn/Simple Libraries/Robotics/ActivityBot/libabdrive
 >compiler=C
 >memtype=cmm main ram compact
 >optimize=-Os
@@ -18,4 +20,5 @@ remote_control.c
 >-Dprintf=__simple_printf
 >defs::-std=c99
 >-lm
+>linker::-lnavigation
 >BOARD::ACTIVITYBOARD
