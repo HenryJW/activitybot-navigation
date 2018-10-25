@@ -1,0 +1,9 @@
+left_led=7
+right_led=2
+ping=16
+ping_mount=17
+left_ir_receiver=8
+left_ir_flashlight=9
+right_ir_flashlight=0
+right_ir_receiver=1
+other_ir_receiver=6

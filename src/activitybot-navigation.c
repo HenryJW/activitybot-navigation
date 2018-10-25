@@ -1,3 +1,8 @@
+// Removed all the print calls because the result in weird errors that ultimately
+// cause the to not behave as expected
+
+#include <stdlib.h>
+
 #include <simpletools.h>
 #include <simpletext.h>
 
@@ -28,23 +33,37 @@ volatile static int *_cog_left_led = NULL;
 volatile static int *_cog_right_led = NULL;
 volatile static short _is_remote_controlled = 0;
 
-
 int main(){
-	settings_init("settings/pins");
-	remote_control_init(_let_remote_control_take_over, _let_robot_drive_itself, OTHER_IR_RECEIVER_PIN_NUM);
 
 	navigation_pin_settings_t navigation_settings = {
-		ping_pin_num: PING_PIN_NUM,
-		left_ir_receiver_pin_num: LEFT_IR_RECEIVER_PIN_NUM,
-		left_ir_flashlight_pin_num: LEFT_IR_FLASHLIGHT_PIN_NUM,
-		right_ir_receiver_pin_num: RIGHT_IR_RECEIVER_PIN_NUM,
-		right_ir_flashlight_pin_num: RIGHT_IR_FLASHLIGHT_PIN_NUM,
-		ping_mount_pin_num: PING_MOUNT_PIN_NUM
+		ping_pin_num: PIN_NUM_PING,
+		left_ir_receiver_pin_num: PIN_NUM_LEFT_IR_RECEIVER,
+		left_ir_flashlight_pin_num: PIN_NUM_LEFT_IR_FLASHLIGHT,
+		right_ir_receiver_pin_num: PIN_NUM_RIGHT_IR_RECEIVER,
+		right_ir_flashlight_pin_num: PIN_NUM_RIGHT_IR_FLASHLIGHT,
+		ping_mount_pin_num: PIN_NUM_PING_MOUNT,
 	};
 
+	remote_event_handlers_t remote_event_handlers = {
+		on_start: _let_remote_control_take_over,
+		on_stop: _let_robot_drive_itself
+	};
+
+
+	remote_button_event_handlers_t remote_button_handlers = {
+		on_up_pressed: navigation_move_forward,
+		on_down_pressed: navigation_move_backward,
+		on_left_pressed: navigation_turn_slightly_left,
+		on_right_pressed: navigation_turn_slightly_right,
+		on_other_pressed: navigation_stop_driving 
+	};
+
+	short remote_control_ir_receiver_pin = PIN_NUM_REMOTE_IR_RECEIVER;
+	remote_control_init(remote_event_handlers, remote_button_handlers, remote_control_ir_receiver_pin);
 	navigation_init(navigation_settings);
 
-    led_blink(26, 3, _BLINK_INTERVAL); //Blink to indicate program has started running
+	//Blink to indicate program has started running
+    led_blink(26, 3, _BLINK_INTERVAL);
     _drive();
 }
 
@@ -173,7 +192,7 @@ void _stop_reversing() {
 }
 
 void _blink_left_led(void *params) {
-	led_blink(LEFT_LED_PIN_NUM, 3, _BLINK_INTERVAL);
+	led_blink(PIN_NUM_LEFT_LED, 3, _BLINK_INTERVAL);
 	if(_cog_left_led != NULL) {
 		cog_end(_cog_left_led);
 		_cog_left_led = NULL;
@@ -181,7 +200,7 @@ void _blink_left_led(void *params) {
 }
 
 void _blink_right_led(void *params) {
-	led_blink(RIGHT_LED_PIN_NUM, 3, _BLINK_INTERVAL);
+	led_blink(PIN_NUM_RIGHT_LED, 3, _BLINK_INTERVAL);
 	if(_cog_right_led != NULL) {
 		cog_end(_cog_right_led);
 		_cog_right_led = NULL;

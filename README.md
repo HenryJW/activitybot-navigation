@@ -38,3 +38,6 @@ Third IR receiver used for optional TV remote control navigation (currently the 
 [Activity bot tutorial](https://learn.parallax.com/tutorials/robot/activitybot/propeller-c-programming-activitybot)
 
 [Configure VS C/C++ VS Code](https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/Getting%20started%20with%20IntelliSense%20configuration.md)
+
+**Notes**
+- Use `printi()` instead of `print()` or `printf()` to significantly reduce program size
